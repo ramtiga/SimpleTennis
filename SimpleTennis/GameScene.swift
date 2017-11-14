@@ -15,12 +15,17 @@ class GameScene: SKScene {
   var enemy = SKSpriteNode()
   var ball = SKSpriteNode()
   var score = [Int]()
+  var mainScoreLbl = SKLabelNode()
+  var enemyScoreLbl = SKLabelNode()
     
   override func didMove(to view: SKView) {
     startGame()
     main = self.childNode(withName: "main") as! SKSpriteNode
     enemy = self.childNode(withName: "enemy") as! SKSpriteNode
     ball = self.childNode(withName: "ball") as! SKSpriteNode
+    
+    mainScoreLbl = self.childNode(withName: "mainScoreLbl") as! SKLabelNode
+    enemyScoreLbl = self.childNode(withName: "enemyScoreLbl") as! SKLabelNode
     
     ball.physicsBody?.applyImpulse(CGVector(dx: 20, dy: 20))
     
@@ -34,6 +39,8 @@ class GameScene: SKScene {
   
   func startGame() {
     score = [0, 0]
+    mainScoreLbl.text = "\(score[0])"
+    enemyScoreLbl.text = "\(score[1])"
   }
   
   func addScore(player: SKSpriteNode) {
@@ -47,7 +54,8 @@ class GameScene: SKScene {
       score[1] += 1
       ball.physicsBody?.applyImpulse(CGVector(dx: -20, dy: -20))
     }
-    print(score)
+    mainScoreLbl.text = "\(score[0])"
+    enemyScoreLbl.text = "\(score[1])"
   }
   
   

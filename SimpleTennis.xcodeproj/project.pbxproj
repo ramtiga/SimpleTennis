@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D93698191FBB162200821AE8 /* LLPIXEL3.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D93698181FBB162200821AE8 /* LLPIXEL3.ttf */; };
 		D9CD24281FB9DE2000DF4887 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9CD24271FB9DE2000DF4887 /* AppDelegate.swift */; };
 		D9CD242A1FB9DE2000DF4887 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = D9CD24291FB9DE2000DF4887 /* GameScene.sks */; };
 		D9CD242C1FB9DE2000DF4887 /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = D9CD242B1FB9DE2000DF4887 /* Actions.sks */; };
@@ -18,6 +19,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		D93698181FBB162200821AE8 /* LLPIXEL3.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = LLPIXEL3.ttf; sourceTree = "<group>"; };
 		D9CD24241FB9DE2000DF4887 /* SimpleTennis.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SimpleTennis.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D9CD24271FB9DE2000DF4887 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D9CD24291FB9DE2000DF4887 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
@@ -60,6 +62,7 @@
 		D9CD24261FB9DE2000DF4887 /* SimpleTennis */ = {
 			isa = PBXGroup;
 			children = (
+				D93698181FBB162200821AE8 /* LLPIXEL3.ttf */,
 				D9CD24271FB9DE2000DF4887 /* AppDelegate.swift */,
 				D9CD24291FB9DE2000DF4887 /* GameScene.sks */,
 				D9CD242B1FB9DE2000DF4887 /* Actions.sks */,
@@ -133,6 +136,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D9CD24331FB9DE2000DF4887 /* Main.storyboard in Resources */,
+				D93698191FBB162200821AE8 /* LLPIXEL3.ttf in Resources */,
 				D9CD242A1FB9DE2000DF4887 /* GameScene.sks in Resources */,
 				D9CD24351FB9DE2000DF4887 /* Assets.xcassets in Resources */,
 				D9CD24381FB9DE2000DF4887 /* LaunchScreen.storyboard in Resources */,
