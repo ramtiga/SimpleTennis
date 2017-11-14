@@ -21,13 +21,17 @@ class GameScene: SKScene {
   override func didMove(to view: SKView) {
     startGame()
     main = self.childNode(withName: "main") as! SKSpriteNode
+    main.position.y = (-self.frame.height / 2) + 50
+    
     enemy = self.childNode(withName: "enemy") as! SKSpriteNode
+    enemy.position.y = (self.frame.height / 2) - 50
+    
     ball = self.childNode(withName: "ball") as! SKSpriteNode
     
     mainScoreLbl = self.childNode(withName: "mainScoreLbl") as! SKLabelNode
     enemyScoreLbl = self.childNode(withName: "enemyScoreLbl") as! SKLabelNode
     
-    ball.physicsBody?.applyImpulse(CGVector(dx: 20, dy: 20))
+    ball.physicsBody?.applyImpulse(CGVector(dx: 10, dy: 10))
     
     let border = SKPhysicsBody(edgeLoopFrom: self.frame)
     
@@ -49,10 +53,10 @@ class GameScene: SKScene {
     
     if player == main {
       score[0] += 1
-      ball.physicsBody?.applyImpulse(CGVector(dx: 20, dy: 20))
+      ball.physicsBody?.applyImpulse(CGVector(dx: 10, dy: 10))
     } else if player == enemy {
       score[1] += 1
-      ball.physicsBody?.applyImpulse(CGVector(dx: -20, dy: -20))
+      ball.physicsBody?.applyImpulse(CGVector(dx: -10, dy: -10))
     }
     mainScoreLbl.text = "\(score[0])"
     enemyScoreLbl.text = "\(score[1])"
@@ -63,9 +67,9 @@ class GameScene: SKScene {
     // Called before each frame is rendered
     enemy.run(SKAction.moveTo(x: ball.position.x, duration: 1.0))
     
-    if ball.position.y <= main.position.y - 70 {
+    if ball.position.y <= main.position.y - 30 {
       addScore(player: enemy)
-    } else if ball.position.y >= enemy.position.y + 70 {
+    } else if ball.position.y >= enemy.position.y + 30 {
       addScore(player: main)
     }
   }
