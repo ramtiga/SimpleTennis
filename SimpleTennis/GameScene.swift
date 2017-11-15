@@ -30,6 +30,9 @@ class GameScene: SKScene {
     mainScoreLbl = self.childNode(withName: "mainScoreLbl") as! SKLabelNode
     enemyScoreLbl = self.childNode(withName: "enemyScoreLbl") as! SKLabelNode
     
+    mainScoreLbl.position.x = (-self.frame.width / 2) + 50
+    enemyScoreLbl.position.x = (-self.frame.width / 2) + 50
+
     let border = SKPhysicsBody(edgeLoopFrom: self.frame)
     
     border.friction = 0

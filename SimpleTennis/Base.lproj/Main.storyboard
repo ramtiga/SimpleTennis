@@ -9,6 +9,11 @@
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="LLPIXEL3.ttf">
+            <string>LLPixel</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--Navigation Controller-->
         <scene sceneID="KmJ-6h-8NT">
@@ -35,37 +40,48 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8a7-C1-jRt">
-                                <rect key="frame" x="152" y="107" width="71" height="30"/>
+                                <rect key="frame" x="119" y="391" width="136" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="LLPixel" family="LLPixel" pointSize="24"/>
                                 <state key="normal" title="2Player"/>
                                 <connections>
                                     <action selector="player2Button:" destination="b4H-3G-oNW" eventType="touchUpInside" id="TfJ-I3-lZm"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="l3b-qf-VPU">
-                                <rect key="frame" x="152" y="168" width="71" height="30"/>
+                                <rect key="frame" x="139" y="210" width="80" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="LLPixel" family="LLPixel" pointSize="24"/>
                                 <state key="normal" title="Easy"/>
                                 <connections>
                                     <action selector="easyButton:" destination="b4H-3G-oNW" eventType="touchUpInside" id="Y3u-rw-QQI"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ijd-Ht-vtv">
-                                <rect key="frame" x="152" y="279" width="71" height="30"/>
+                                <rect key="frame" x="139" y="327" width="86" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="LLPixel" family="LLPixel" pointSize="24"/>
                                 <state key="normal" title="Hard"/>
                                 <connections>
                                     <action selector="hardButton:" destination="b4H-3G-oNW" eventType="touchUpInside" id="qvo-fr-jJ5"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MOY-qa-fuA">
-                                <rect key="frame" x="152" y="222" width="71" height="30"/>
+                                <rect key="frame" x="139" y="267" width="112" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="LLPixel" family="LLPixel" pointSize="24"/>
                                 <state key="normal" title="Medium"/>
                                 <connections>
                                     <action selector="mediumButton:" destination="b4H-3G-oNW" eventType="touchUpInside" id="RUp-5d-y8k"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="1Player" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6KS-PW-hNm">
+                                <rect key="frame" x="119" y="141" width="123" height="35"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="LLPixel" family="LLPixel" pointSize="24"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="sN8-HF-6Uw"/>
