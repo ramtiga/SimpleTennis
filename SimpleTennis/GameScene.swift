@@ -17,7 +17,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
   var score = [Int]()
   var mainScoreLbl = SKLabelNode()
   var enemyScoreLbl = SKLabelNode()
-  
+
   var gameoverFlg: Bool = false
   let sound1 = SKAction.playSoundFileNamed("button01b.mp3", waitForCompletion: true)
 
@@ -94,7 +94,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     //3点先取で終了
-    if score[1] > 2 {
+    if score[1] > 2 || score[0] > 2 {
       self.isPaused = true
       self.gameoverFlg = true
       let returnMenuLbl = SKLabelNode(fontNamed: "LLPIXEL")
@@ -103,14 +103,21 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
       returnMenuLbl.fontSize = 28
       returnMenuLbl.fontColor = UIColor.green
       self.addChild(returnMenuLbl)
-
     }
   }
   
   override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
     //ゲームオーバー時はメニューに戻る
     if gameoverFlg {
-
+      if let scene = SKScene(fileNamed: "StartScene") {
+        if let view = self.view as SKView? {
+          scene.scaleMode = .aspectFill
+          scene.size = view.bounds.size
+          view.presentScene(scene)
+        }
+      }
+      
+      return
     }
     for touch in touches {
       let location = touch.location(in: self)
@@ -151,4 +158,5 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
       self.run(sound1)
     }
   }
+  
 }

@@ -9,12 +9,6 @@
 import Foundation
 import UIKit
 
-enum gameType {
-  case easy
-  case medium
-  case hard
-  case player2
-}
 
 class MenuVC : UIViewController {
  
@@ -39,7 +33,8 @@ class MenuVC : UIViewController {
     currentGameType = game
     self.navigationController?.isNavigationBarHidden = true
     self.navigationController?.pushViewController(gameVC, animated: true)
-
-
+  }
+  
+  @IBAction func backToMenu(segue: UIStoryboardSegue) {
   }
 }

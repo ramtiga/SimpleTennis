@@ -10,6 +10,12 @@ import UIKit
 import SpriteKit
 import GameplayKit
 
+enum gameType {
+  case easy
+  case medium
+  case hard
+  case player2
+}
 var currentGameType : gameType = .medium
 
 class GameViewController: UIViewController {
@@ -19,13 +25,14 @@ class GameViewController: UIViewController {
         
         if let view = self.view as! SKView? {
             // Load the SKScene from 'GameScene.sks'
-            if let scene = SKScene(fileNamed: "GameScene") {
+//            if let scene = SKScene(fileNamed: "GameScene") {
+            if let scene = SKScene(fileNamed: "StartScene") {
                 // Set the scale mode to scale to fit the window
                 scene.scaleMode = .aspectFill
                 scene.size = view.bounds.size
 
                 // Present the scene
-                view.presentScene(scene)
+               view.presentScene(scene)
             }
             
             view.ignoresSiblingOrder = true
