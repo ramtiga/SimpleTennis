@@ -9,7 +9,7 @@
 import SpriteKit
 import GameplayKit
 
-class GameScene: SKScene {
+class GameScene: SKScene, SKPhysicsContactDelegate {
   
   var main = SKSpriteNode()
   var enemy = SKSpriteNode()
@@ -17,7 +17,10 @@ class GameScene: SKScene {
   var score = [Int]()
   var mainScoreLbl = SKLabelNode()
   var enemyScoreLbl = SKLabelNode()
-    
+  
+  var gameoverFlg: Bool = false
+  let sound1 = SKAction.playSoundFileNamed("button01b.mp3", waitForCompletion: true)
+
   override func didMove(to view: SKView) {
     main = self.childNode(withName: "main") as! SKSpriteNode
     main.position.y = (-self.frame.height / 2) + 50
@@ -39,9 +42,11 @@ class GameScene: SKScene {
     border.restitution = 1
     
     self.physicsBody = border
+    self.physicsWorld.contactDelegate = self
     startGame()
   }
   
+  //ゲーム開始処理
   func startGame() {
     score = [0, 0]
     mainScoreLbl.text = "\(score[0])"
@@ -49,6 +54,7 @@ class GameScene: SKScene {
     ball.physicsBody?.applyImpulse(CGVector(dx: 10, dy: 10))
   }
   
+  //スコア更新
   func addScore(player: SKSpriteNode) {
     ball.position = CGPoint(x: 0, y: 0)
     ball.physicsBody?.velocity = CGVector(dx: 0, dy: 0)
@@ -86,9 +92,26 @@ class GameScene: SKScene {
     } else if ball.position.y >= enemy.position.y + 30 {
       addScore(player: main)
     }
+    
+    //3点先取で終了
+    if score[1] > 2 {
+      self.isPaused = true
+      self.gameoverFlg = true
+      let returnMenuLbl = SKLabelNode(fontNamed: "LLPIXEL")
+      returnMenuLbl.position = CGPoint(x: 0, y: 0)
+      returnMenuLbl.text = "Tap to Menu"
+      returnMenuLbl.fontSize = 28
+      returnMenuLbl.fontColor = UIColor.green
+      self.addChild(returnMenuLbl)
+
+    }
   }
   
   override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+    //ゲームオーバー時はメニューに戻る
+    if gameoverFlg {
+
+    }
     for touch in touches {
       let location = touch.location(in: self)
       
@@ -118,6 +141,14 @@ class GameScene: SKScene {
       } else {
         main.run(SKAction.moveTo(x: location.x, duration: 0.2))
       }
+    }
+  }
+
+  //衝突処理
+  func didBegin(_ contact: SKPhysicsContact) {
+    //ラケットに当たった場合のみ効果音
+    if contact.bodyA.categoryBitMask == 1 || contact.bodyB.categoryBitMask == 1 {
+      self.run(sound1)
     }
   }
 }

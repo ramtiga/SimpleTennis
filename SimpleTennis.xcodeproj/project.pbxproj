@@ -10,6 +10,7 @@
 		D93698191FBB162200821AE8 /* LLPIXEL3.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D93698181FBB162200821AE8 /* LLPIXEL3.ttf */; };
 		D936981B1FBB2D1400821AE8 /* MenuVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D936981A1FBB2D1400821AE8 /* MenuVC.swift */; };
 		D9763EAC1FBC12E3007CF852 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D9763EAB1FBC12E3007CF852 /* Assets.xcassets */; };
+		D9763EB01FBC4C77007CF852 /* button01b.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D9763EAF1FBC4C77007CF852 /* button01b.mp3 */; };
 		D9CD24281FB9DE2000DF4887 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9CD24271FB9DE2000DF4887 /* AppDelegate.swift */; };
 		D9CD242A1FB9DE2000DF4887 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = D9CD24291FB9DE2000DF4887 /* GameScene.sks */; };
 		D9CD242C1FB9DE2000DF4887 /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = D9CD242B1FB9DE2000DF4887 /* Actions.sks */; };
@@ -23,6 +24,7 @@
 		D93698181FBB162200821AE8 /* LLPIXEL3.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = LLPIXEL3.ttf; sourceTree = "<group>"; };
 		D936981A1FBB2D1400821AE8 /* MenuVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuVC.swift; sourceTree = "<group>"; };
 		D9763EAB1FBC12E3007CF852 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		D9763EAF1FBC4C77007CF852 /* button01b.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = button01b.mp3; sourceTree = "<group>"; };
 		D9CD24241FB9DE2000DF4887 /* SimpleTennis.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SimpleTennis.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D9CD24271FB9DE2000DF4887 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D9CD24291FB9DE2000DF4887 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
@@ -45,6 +47,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D9763EAE1FBC4C54007CF852 /* Sound */ = {
+			isa = PBXGroup;
+			children = (
+				D9763EAF1FBC4C77007CF852 /* button01b.mp3 */,
+			);
+			path = Sound;
+			sourceTree = "<group>";
+		};
 		D9CD241B1FB9DE2000DF4887 = {
 			isa = PBXGroup;
 			children = (
@@ -64,6 +74,7 @@
 		D9CD24261FB9DE2000DF4887 /* SimpleTennis */ = {
 			isa = PBXGroup;
 			children = (
+				D9763EAE1FBC4C54007CF852 /* Sound */,
 				D93698181FBB162200821AE8 /* LLPIXEL3.ttf */,
 				D9CD24271FB9DE2000DF4887 /* AppDelegate.swift */,
 				D9CD24291FB9DE2000DF4887 /* GameScene.sks */,
@@ -144,6 +155,7 @@
 				D9CD24381FB9DE2000DF4887 /* LaunchScreen.storyboard in Resources */,
 				D9763EAC1FBC12E3007CF852 /* Assets.xcassets in Resources */,
 				D9CD242C1FB9DE2000DF4887 /* Actions.sks in Resources */,
+				D9763EB01FBC4C77007CF852 /* button01b.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
