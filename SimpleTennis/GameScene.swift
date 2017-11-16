@@ -20,6 +20,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 
   var gameoverFlg: Bool = false
   let sound1 = SKAction.playSoundFileNamed("button01b.mp3", waitForCompletion: true)
+  
+  let POINT_LIMIT = 2
 
   override func didMove(to view: SKView) {
     main = self.childNode(withName: "main") as! SKSpriteNode
@@ -93,16 +95,47 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
       addScore(player: main)
     }
     
-    //3点先取で終了
-    if score[1] > 2 || score[0] > 2 {
+    //7点先取で終了
+    if score[1] > POINT_LIMIT || score[0] > POINT_LIMIT {
       self.isPaused = true
       self.gameoverFlg = true
-      let returnMenuLbl = SKLabelNode(fontNamed: "LLPIXEL")
-      returnMenuLbl.position = CGPoint(x: 0, y: 0)
-      returnMenuLbl.text = "Tap to Menu"
-      returnMenuLbl.fontSize = 28
-      returnMenuLbl.fontColor = UIColor.green
-      self.addChild(returnMenuLbl)
+      
+      if score[0] > POINT_LIMIT {
+        //enemy loser
+        let enemyResultLbl = SKLabelNode(fontNamed: "LLPIXEL")
+        enemyResultLbl.position = CGPoint(x: 0, y: 130)
+        enemyResultLbl.zRotation = CGFloat(GLKMathDegreesToRadians(180))
+        enemyResultLbl.text = "LOSER"
+        enemyResultLbl.fontSize = 28
+        enemyResultLbl.fontColor = UIColor.green
+        self.addChild(enemyResultLbl)
+        
+        //main win
+        let mainResultLbl = SKLabelNode(fontNamed: "LLPIXEL")
+        mainResultLbl.position = CGPoint(x: 0, y: -130)
+        mainResultLbl.text = "WINNER!"
+        mainResultLbl.fontSize = 28
+        mainResultLbl.fontColor = UIColor.green
+        self.addChild(mainResultLbl)
+      }
+      else if score[1] > POINT_LIMIT {
+        //enemy win
+        let enemyResultLbl = SKLabelNode(fontNamed: "LLPIXEL")
+        enemyResultLbl.position = CGPoint(x: 0, y: 130)
+        enemyResultLbl.zRotation = CGFloat(GLKMathDegreesToRadians(180))
+        enemyResultLbl.text = "WINNER!"
+        enemyResultLbl.fontSize = 28
+        enemyResultLbl.fontColor = UIColor.green
+        self.addChild(enemyResultLbl)
+        
+        //main loser
+        let mainResultLbl = SKLabelNode(fontNamed: "LLPIXEL")
+        mainResultLbl.position = CGPoint(x: 0, y: -130)
+        mainResultLbl.text = "LOSER"
+        mainResultLbl.fontSize = 28
+        mainResultLbl.fontColor = UIColor.green
+        self.addChild(mainResultLbl)
+      }
     }
   }
   
