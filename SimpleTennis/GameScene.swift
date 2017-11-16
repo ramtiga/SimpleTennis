@@ -53,7 +53,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     score = [0, 0]
     mainScoreLbl.text = "\(score[0])"
     enemyScoreLbl.text = "\(score[1])"
-    ball.physicsBody?.applyImpulse(CGVector(dx: 10, dy: 10))
+    setBallSpeed(player: main)
   }
   
   //スコア更新
@@ -63,21 +63,37 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     if player == main {
       score[0] += 1
-      ball.physicsBody?.applyImpulse(CGVector(dx: 10, dy: 10))
+      setBallSpeed(player: main)
     } else if player == enemy {
       score[1] += 1
-      ball.physicsBody?.applyImpulse(CGVector(dx: -10, dy: -10))
+      setBallSpeed(player: enemy)
     }
     mainScoreLbl.text = "\(score[0])"
     enemyScoreLbl.text = "\(score[1])"
   }
   
+  //ボールスピード設定
+  func setBallSpeed(player: SKSpriteNode) {
+    if player == main {
+      if currentGameType == .easy {
+        ball.physicsBody?.applyImpulse(CGVector(dx: 7, dy: 7))
+      } else {
+        ball.physicsBody?.applyImpulse(CGVector(dx: 10, dy: 10))
+      }
+    } else {
+      if currentGameType == .easy {
+        ball.physicsBody?.applyImpulse(CGVector(dx: -7, dy: -7))
+      } else {
+        ball.physicsBody?.applyImpulse(CGVector(dx: -10, dy: -10))
+      }
+    }
+  }
   
   override func update(_ currentTime: TimeInterval) {
     // Called before each frame is rendered
     switch currentGameType {
     case .easy:
-      enemy.run(SKAction.moveTo(x: ball.position.x, duration: 2.0))
+      enemy.run(SKAction.moveTo(x: ball.position.x, duration: 2.5))
       break
     case .medium:
       enemy.run(SKAction.moveTo(x: ball.position.x, duration: 1.0))
