@@ -37,6 +37,7 @@ class StartScene: SKScene {
     player2Button.position = CGPoint(x: 0, y: hardButton.position.y - self.frame.height / 10)
     player2Button.name = "player2Button"
     self.addChild(player2Button)
+    
   }
   
   override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -66,5 +67,15 @@ class StartScene: SKScene {
         view.presentScene(scene)
       }
     }
+  }
+  func makeLightNode() -> SKSpriteNode{
+    let light = SKSpriteNode(color: .yellow, size: CGSize(width: 8, height: 8))
+    let blink = SKAction.sequence([
+      SKAction.fadeOut(withDuration: 0.25),
+      SKAction.fadeIn(withDuration: 0.25)
+      ])
+    let blinkForever = SKAction.repeatForever(blink)
+    light.run(blinkForever)
+    return light
   }
 }

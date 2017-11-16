@@ -21,7 +21,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
   var gameoverFlg: Bool = false
   let sound1 = SKAction.playSoundFileNamed("button01b.mp3", waitForCompletion: true)
   
-  let POINT_LIMIT = 2
+  let POINT_LIMIT = 6
 
   override func didMove(to view: SKView) {
     main = self.childNode(withName: "main") as! SKSpriteNode
@@ -90,6 +90,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
   }
   
   override func update(_ currentTime: TimeInterval) {
+    if self.gameoverFlg {
+      ball.physicsBody?.velocity = CGVector(dx: 0, dy: 0)
+      return
+    }
     // Called before each frame is rendered
     switch currentGameType {
     case .easy:
@@ -113,9 +117,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     //7点先取で終了
     if score[1] > POINT_LIMIT || score[0] > POINT_LIMIT {
-      self.isPaused = true
       self.gameoverFlg = true
-      
+     
+      let blink = SKAction.sequence([ SKAction.fadeOut(withDuration: 0.3), SKAction.fadeIn(withDuration: 0.3) ])
+      let blinkForever = SKAction.repeatForever(blink)
+
       if score[0] > POINT_LIMIT {
         //enemy loser
         let enemyResultLbl = SKLabelNode(fontNamed: "LLPIXEL")
@@ -124,17 +130,20 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         enemyResultLbl.text = "LOSER"
         enemyResultLbl.fontSize = 28
         enemyResultLbl.fontColor = UIColor.green
-        self.addChild(enemyResultLbl)
         
+        enemyResultLbl.run(blinkForever)
+        self.addChild(enemyResultLbl)
+
         //main win
         let mainResultLbl = SKLabelNode(fontNamed: "LLPIXEL")
         mainResultLbl.position = CGPoint(x: 0, y: -130)
         mainResultLbl.text = "WINNER!"
         mainResultLbl.fontSize = 28
         mainResultLbl.fontColor = UIColor.green
+        
+        mainResultLbl.run(blinkForever)
         self.addChild(mainResultLbl)
-      }
-      else if score[1] > POINT_LIMIT {
+      } else {
         //enemy win
         let enemyResultLbl = SKLabelNode(fontNamed: "LLPIXEL")
         enemyResultLbl.position = CGPoint(x: 0, y: 130)
@@ -142,14 +151,18 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         enemyResultLbl.text = "WINNER!"
         enemyResultLbl.fontSize = 28
         enemyResultLbl.fontColor = UIColor.green
-        self.addChild(enemyResultLbl)
         
+        enemyResultLbl.run(blinkForever)
+        self.addChild(enemyResultLbl)
+
         //main loser
         let mainResultLbl = SKLabelNode(fontNamed: "LLPIXEL")
         mainResultLbl.position = CGPoint(x: 0, y: -130)
         mainResultLbl.text = "LOSER"
         mainResultLbl.fontSize = 28
         mainResultLbl.fontColor = UIColor.green
+
+        mainResultLbl.run(blinkForever)
         self.addChild(mainResultLbl)
       }
     }
