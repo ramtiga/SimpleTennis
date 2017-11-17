@@ -12,9 +12,15 @@ import GameplayKit
 class StartScene: SKScene {
 
   override func didMove(to view: SKView) {
+    //menu title
+    let menuTitle = SKSpriteNode(imageNamed: "menu_title.png")
+    menuTitle.position = CGPoint(x: 0, y: (self.frame.height / 2) - (self.frame.height / 6))
+//    player1Button.name = "player1Button"
+    self.addChild(menuTitle)
+    
     //1Player
     let player1Button = SKSpriteNode(imageNamed: "1player.png")
-    player1Button.position = CGPoint(x: 0, y: (self.frame.height / 2) - (self.frame.height / 4))
+    player1Button.position = CGPoint(x: 0, y: (self.frame.height / 2) - (self.frame.height / 3))
     player1Button.name = "player1Button"
     self.addChild(player1Button)
     //Easy
